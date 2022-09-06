@@ -31,9 +31,12 @@ namespace EMS.Data.Services.Data
                     employee.Last_name = sdr["Last_name"].ToString();
                     employee.Hobbies = sdr["Hobbies"].ToString();
                     employee.Salary = (int)sdr["Salary"];
-                    employee.Gender = (int)sdr["Gender"];
-                    employee.Dep_Id = (int)sdr["Dep_Id"];
+                    employee.Gender = sdr["Gender"].ToString();
+                    employee.Dep_name = sdr["Dep_name"].ToString();
+                    employee.Des_name = sdr["Des_name"].ToString();
                     employee.Des_Id = (int)sdr["Des_Id"];
+                    employee.Dep_Id = (int)sdr["Dep_Id"];
+
 
                     lstEmployee.Add(employee);
                 }
@@ -70,21 +73,22 @@ namespace EMS.Data.Services.Data
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 SqlCommand cmd = new SqlCommand("UpdateEmp", con);
-
+                con.Open();
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.Add(new SqlParameter("@Empid", employees.Empid));
+                cmd.Parameters.AddWithValue("@Empid", employees.Empid);
 
                 cmd.Parameters.AddWithValue("@First_name", employees.First_name);
                 cmd.Parameters.AddWithValue("@Middle_name", employees.Middle_name);
-                cmd.Parameters.AddWithValue("Last_name", employees.Last_name);
+                cmd.Parameters.AddWithValue("@Last_name", employees.Last_name);
                 cmd.Parameters.AddWithValue("@Salary", employees.Salary);
                 cmd.Parameters.AddWithValue("@Hobbies", employees.Hobbies);
                 cmd.Parameters.AddWithValue("@Gender", employees.Gender);
                 cmd.Parameters.AddWithValue("@Dep_Id", employees.Dep_Id);
-                cmd.Parameters.AddWithValue("@Des_Id", employees.Des_Id);
+                cmd.Parameters.AddWithValue("@Des_Id",employees.Des_Id);
 
-                con.Open();
+
+                
                 cmd.ExecuteNonQuery();
                 con.Close();
 

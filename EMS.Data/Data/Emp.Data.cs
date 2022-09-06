@@ -14,6 +14,7 @@ namespace EMS.Data.Services.Data
             employees = GetAllEmployee();
             return employees;
         }
+
         public void CreateEmployees(Employees employees)
         {
             CreateEmp(employees);

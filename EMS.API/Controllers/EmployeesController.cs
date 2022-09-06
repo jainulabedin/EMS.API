@@ -25,12 +25,6 @@ namespace API.Controllers
             return ems.GetEmployees();
         }
 
-        // GET api/<EmpController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
 
         // POST api/<EmpController>
         [HttpPost]

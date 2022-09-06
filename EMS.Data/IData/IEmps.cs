@@ -11,5 +11,6 @@ namespace EMS.Data.Services.IData
         void CreateEmployees(Employees employee);
         void UpdateEmployees(Employees employees);
         void DeleteEmployees(int id);
+     
     }
 }

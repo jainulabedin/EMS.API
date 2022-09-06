@@ -12,8 +12,11 @@ namespace Model
         public string Last_name { get; set; }
         public int Salary { get; set; }
         public string Hobbies { get; set; }
-        public int Gender { get; set; }
+        public string Gender { get; set; }
         public int Dep_Id { get; set; }
         public int Des_Id { get; set; }
+        public string Dep_name { get; set; }
+        public string Des_name { get; set; }
+ 
     }
 }
