@@ -10,6 +10,8 @@ namespace EMS.Data.Services.Data
     public partial class Emps
     {
         string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=EmpDatabase;Integrated Security=True";
+
+        #region GetAllEmployee
         public List<Employees> GetAllEmployee()
         {
             List<Employees> lstEmployee = new List<Employees>();
@@ -45,6 +47,9 @@ namespace EMS.Data.Services.Data
             return lstEmployee;
         }
 
+        #endregion
+
+        #region AddEmployee
         public void CreateEmp(Employees employee)
         {
 
@@ -68,6 +73,9 @@ namespace EMS.Data.Services.Data
                 con.Close();
             }
         }
+        #endregion
+
+        #region UpdateEmployee
         public void UpdateEmp(Employees employees)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -94,6 +102,10 @@ namespace EMS.Data.Services.Data
 
             }
         }
+
+        #endregion
+
+        #region DeleteEmployee
         public void DeleteEmp(int? id)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -107,5 +119,7 @@ namespace EMS.Data.Services.Data
                 con.Close();
             }
         }
+        #endregion
     }
 }
+

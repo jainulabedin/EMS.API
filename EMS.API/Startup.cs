@@ -15,6 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.OpenApi.Models;
 
 namespace API
 {
@@ -46,6 +47,11 @@ namespace API
 
             });
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "New Ems Demo API", Version = "v1" });
+            });
+
             services.AddControllers();
             services.AddScoped<Employees>();
             services.AddScoped<IEmps, Emps>();
@@ -65,6 +71,14 @@ namespace API
                 app.UseDeveloperExceptionPage();
             }
 
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "EMS Demo API V1");
+            });
+
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -78,3 +92,4 @@ namespace API
         }
     }
 }
+                        
